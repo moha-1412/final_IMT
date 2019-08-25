@@ -34,7 +34,7 @@ int main (void){
   
   while(inf==0){//inf loop
 
-  printf("\n for Admin mode, enter 1\n for user mode, enter 2\n");
+  printf("\n for Admin mode, enter 1\n for user mode, enter 2:\n");
   scanf("%d",&mode);
 
   if(mode==1){    // Admin mode 
@@ -45,13 +45,13 @@ int main (void){
       if(input_pass==1234){
 	break;
       }//if input_pass
-      printf("\n incorrect pass, try again\n");
+      printf("\n incorrect pass, try again:\n");
     }// password for loop
 
     if(i==3) {return 0;}//if all the three tries of password are wrong
 
     // now we are the Admin mode
-    printf("\n enter an option number :\n 1- Add new patient record\n 2- Edit patient record\n 3- Reserve a slut with the doctor\n 4- Cancel reservation\n");
+    printf("\n\n enter an option number :\n 1- Add new patient record\n 2- Edit patient record\n 3- Reserve a slut with the doctor\n 4- Cancel reservation\n\n");
     scanf("%d",&admin_option);
     
     if(admin_option==1){//add new patient
@@ -84,7 +84,7 @@ int main (void){
   else if(mode==2){
     
 
-    printf("\nChoose option number :\n\t1- View patient record\n\t2- View today's reservations\n");
+    printf("\n\nChoose option number :\n\t1- View patient record\n\t2- View today's reservations\n\n");
     scanf("%d",&user_option);
     if(user_option==1){// view patient record
       view_record();
@@ -133,15 +133,16 @@ int add_patient(void)
   ptr=(struct node *)malloc(sizeof(struct node));
  
   //**********************************ID*******************
-  printf("\n\n Enter the Id of the Patient \n: ");
+  printf("\n\n Enter patient ID: \n\n ");
   for(i=0;i<3;i++){
     scanf("%d",&temp);
     id_check=find_id(temp);
     if(id_check==NULL){
       ptr->id=temp;
+      printf("\n\nDONE\n\n");
       break;
     }
-    printf("\nID is exist!, choose another one:\n");
+    printf("\n\nID is exist!, choose another one:\n\n");
   }
   if(i==3){return 0;}//in case wrong id 3 times!
     //*****************************************************
@@ -164,7 +165,7 @@ int add_patient(void)
   // age
   printf("\nEnter the age :\n ");
   scanf("%d",&(ptr->age));
-    
+  printf("\n\nDONE!\n\n");
 
   if(head == NULL)
     {
@@ -188,7 +189,7 @@ void edit_patient(void){
   struct node *id_check;
   u8 i,j=0,k;
 
-  printf("\n enter ID to edit :\n");
+  printf("\n\n enter ID to edit :\n");
   for(i=0;i<3;i++)  {
     scanf("%d",&edited_id);
     id_check=find_id(edited_id);
@@ -197,7 +198,7 @@ void edit_patient(void){
   
       
       // Name
-      printf("\nEnter the name :\n ");
+      printf("\n\nEnter the name :\n ");
       for(k=0;k<20;k++)
 	{
 	  scanf("%c",&(id_check->name[k]));
@@ -215,6 +216,7 @@ void edit_patient(void){
       // age
       printf("\nEnter the age :\n ");
       scanf("%d",&(id_check->age));
+      printf("\n\nDONE!\n\n");
       break;
     }// end of "if"
     else{
@@ -270,7 +272,7 @@ void reserve_slut(void){
       printf("\nDONE\n");
       break;
     }// end of if 
-    printf("\nID doesn't exist! try again.\n");
+    printf("\nID doesn't exist! try again.\n\n");
 
   }// end of for loop
 
@@ -373,7 +375,7 @@ void view_reserve(void){
     printf("\t available");
   }
   else{
-    printf("\t %d",sluts[0]);
+    printf("\t ID:   %d",sluts[0]);
   }
  
   printf("\n2- from 2:30 to 3:00");
@@ -381,28 +383,28 @@ void view_reserve(void){
     printf("\t available");
   }
   else{
-    printf("\t %d",sluts[1]);
+    printf("\t ID:   %d",sluts[1]);
   }
   printf("\n3- from 3:00 to 3:30");
   if(sluts[2]==0){
     printf("\t available"); 
   }
   else{
-    printf("\t %d",sluts[2]);
+    printf("\t ID:   %d",sluts[2]);
   }
   printf("\n4- from 4:00 to 4:30");
   if(sluts[3]==0){
     printf("\t available"); 
   }
   else{
-    printf("\t %d",sluts[3]);
+    printf("\t ID:   %d",sluts[3]);
   }
   printf("\n5- from 4:30 to 5:00");
   if(sluts[4]==0){
     printf("\t available"); 
   }
   else{
-    printf("\t %d",sluts[4]);
+    printf("\t ID:   %d",sluts[4]);
   }
  
 
