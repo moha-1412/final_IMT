@@ -24,11 +24,12 @@ int add_patient(void);
 void reserve_slut(void);
 u8 search_id(u32 id);
 void cancel_reserve(void);
+void view_record(void);
+void view_reserve(void);
 
-
-
+//#############################################################################
 int main (void){
-  u8 mode,i,admin_option,inf=0;
+  u8 mode,i,admin_option,inf=0,user_option;
   u16 input_pass;
   
   while(inf==0){//inf loop
@@ -78,8 +79,29 @@ int main (void){
     else{return 0;}//wrong input option
     
     
-  }//if mode 
-  }
+  }//if mode 1
+
+  else if(mode==2){
+    
+
+    printf("\nChoose option number :\n\t1- View patient record\n\t2- View today's reservations\n");
+    scanf("%d",&user_option);
+    if(user_option==1){// view patient record
+      view_record();
+
+
+    }
+
+    else if(user_option==2){// View reservations
+      view_reserve();
+
+    }
+
+
+  }// if mode 2
+
+
+  }// inf loop
 
 }//main function
 
@@ -233,7 +255,7 @@ void reserve_slut(void){
   if(sluts[4]!=0){
     printf("\tNot available"); 
   }
-
+ 
 
   printf("\nEnter patient ID\n");
   
@@ -297,6 +319,93 @@ void cancel_reserve(void){
     printf("\nID doesn't exist! try again.\n");
 
   }// end of for loop
+
+
+
+}// end of function
+
+
+//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% USER_MODE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+void view_record(void){
+  u32 ID;
+  u8 i,j;
+  struct node*id_check3;
+
+ printf("\n\n Enter the ID of the Patient \n: ");
+  for(i=0;i<3;i++){
+    scanf("%d",&ID);
+    id_check3=find_id(ID);
+    if(id_check3!=NULL){// id is exist
+      printf("\n Name :\t");
+      for(j=0;j<20;j++){// print name
+	printf("%c",id_check3->name[j]);
+      }// print name for loop 
+
+
+      printf("\n Gender :\t");
+      for(j=0;j<10;j++){// print gender
+	printf("%c",id_check3->gender[j]);
+      }// print gender for loop 
+
+      printf("\n Age :\t%d",id_check3->age);
+
+      printf("\n ID :\t%d",id_check3->id);
+
+
+      break;
+    }// id is exist
+    printf("\nID does's exist! try again.:\n");
+  }// end of for loop
+
+
+}// end of function
+
+
+
+void view_reserve(void){
+
+
+ 
+  printf("\n1- from 2:00 to 2:30");
+  if(sluts[0]==0){
+    printf("\t available");
+  }
+  else{
+    printf("\t %d",sluts[0]);
+  }
+ 
+  printf("\n2- from 2:30 to 3:00");
+  if(sluts[1]==0){
+    printf("\t available");
+  }
+  else{
+    printf("\t %d",sluts[1]);
+  }
+  printf("\n3- from 3:00 to 3:30");
+  if(sluts[2]==0){
+    printf("\t available"); 
+  }
+  else{
+    printf("\t %d",sluts[2]);
+  }
+  printf("\n4- from 4:00 to 4:30");
+  if(sluts[3]==0){
+    printf("\t available"); 
+  }
+  else{
+    printf("\t %d",sluts[3]);
+  }
+  printf("\n5- from 4:30 to 5:00");
+  if(sluts[4]==0){
+    printf("\t available"); 
+  }
+  else{
+    printf("\t %d",sluts[4]);
+  }
+ 
+
 
 
 
