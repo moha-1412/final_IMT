@@ -34,7 +34,7 @@ int main (void){
   
   while(inf==0){//inf loop
 
-  printf("\n for Admin mode, enter 1\n for user mode, enter 2:\n");
+  printf("\n for Admin mode, enter 1\n for user mode, enter 2  :\n");
   scanf("%d",&mode);
 
   if(mode==1){    // Admin mode 
@@ -139,7 +139,6 @@ int add_patient(void)
     id_check=find_id(temp);
     if(id_check==NULL){
       ptr->id=temp;
-      printf("\n\nDONE\n\n");
       break;
     }
     printf("\n\nID is exist!, choose another one:\n\n");
@@ -335,18 +334,18 @@ void view_record(void){
   u8 i,j;
   struct node*id_check3;
 
- printf("\n\n Enter the ID of the Patient \n: ");
+ printf("\n\n Enter  patient ID : \n\n ");
   for(i=0;i<3;i++){
     scanf("%d",&ID);
     id_check3=find_id(ID);
     if(id_check3!=NULL){// id is exist
-      printf("\n Name :\t");
+      printf("\n Name :");
       for(j=0;j<20;j++){// print name
 	printf("%c",id_check3->name[j]);
       }// print name for loop 
 
 
-      printf("\n Gender :\t");
+      printf("\n Gender :");
       for(j=0;j<10;j++){// print gender
 	printf("%c",id_check3->gender[j]);
       }// print gender for loop 
